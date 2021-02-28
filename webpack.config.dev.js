@@ -13,6 +13,11 @@ const HtmlWebpackConfig = {
 module.exports = {
   mode: 'development',
   entry: './src/main.js',
+  output: {
+    path: path.resolve('dist'),
+    filename: 'bundle.js',
+    publicPath: '/'
+  },
   module: {
     rules: [
       {
@@ -41,5 +46,8 @@ module.exports = {
       vue: 'vue/dist/vue.js',
       '@': path.resolve(__dirname, 'src')
     }
+  },
+  devServer: {
+    historyApiFallback: true
   }
 }

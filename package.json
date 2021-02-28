@@ -24,6 +24,7 @@
   "homepage": "https://github.com/Guilherme-mm/fira-web#readme",
   "dependencies": {
     "@okta/okta-auth-js": "^4.7.1",
+    "@okta/okta-vue": "^3.1.0",
     "vue": "^2.6.12",
     "vue-router": "^3.4.9"
   },

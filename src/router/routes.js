@@ -1,27 +1,24 @@
 // External dependencies
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
-// Internal Dependencies
-import auth from '@/modules/auth'
+import { OktaAuth } from '@okta/okta-auth-js'
+import OktaVue, { LoginCallback } from '@okta/okta-vue'
 
 // Pages
 import PublicHome from '@/pages/public-home/PublicHome.vue'
-import Login from '@/pages/login/Login.vue'
-import UserRoot from '@/pages/user/UserRoot.vue'
+import PrivateRoot from '@/pages/private/PrivateRoot.vue'
 
 Vue.use(VueRouter)
 
-function requireAuth (to, from, next) {
-  if (!auth.loggedIn()) {
-    next({
-      path: '/login',
-      query: { redirect: to.fullPath }
-    })
-  } else {
-    next()
-  }
-}
+// Configuring the okta auth plugin
+const oktaAuth = new OktaAuth({
+  issuer: 'https://dev-51911371.okta.com',
+  clientId: '0oa7bb14lbyxSqWIQ5d6',
+  redirectUri: window.location.origin + '/login/callback',
+  scopes: ['openid', 'profile', 'email']
+})
+
+Vue.use(OktaVue, { oktaAuth })
 
 export default new VueRouter({
   mode: 'history',
@@ -32,18 +29,16 @@ export default new VueRouter({
       component: PublicHome
     },
     {
-      path: '/login',
-      name: 'Login',
-      component: Login
+      path: '/login/callback',
+      component: LoginCallback
     },
     {
-      path: '/login/callback'
-    },
-    {
-      path: '/user/:id',
-      name: 'User Environment',
-      component: UserRoot,
-      beforeEnter: requireAuth,
+      path: '/private',
+      name: 'Private Environment',
+      component: PrivateRoot,
+      meta: {
+        requiresAuth: true
+      },
       children: [
 
       ]

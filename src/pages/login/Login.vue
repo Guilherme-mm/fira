@@ -62,7 +62,7 @@ export default {
         if (!loggedIn) {
           this.error = true
         } else {
-          this.$router.replace(this.$route.query.redirect || '/user/')
+          this.$router.replace(this.$route.query.redirect || '/private/')
         }
       })
     }
