@@ -7,6 +7,7 @@ import OktaVue, { LoginCallback } from '@okta/okta-vue'
 // Pages
 import PublicHome from '@/pages/public-home/PublicHome.vue'
 import PrivateRoot from '@/pages/private/PrivateRoot.vue'
+import UserDashboard from '@/pages/private/user-dashboard/UserDashboard.vue'
 
 Vue.use(VueRouter)
 
@@ -40,7 +41,14 @@ export default new VueRouter({
         requiresAuth: true
       },
       children: [
-
+        {
+          path: 'dashboard',
+          name: 'User Dashboard',
+          component: UserDashboard,
+          meta: {
+            requiresAuth: true
+          }
+        }
       ]
     }
   ]

@@ -1,14 +1,17 @@
 <template>
   <div id="private-root-template">
-    <p>Private Root</p>
-    <p>Hello {{ authenticatedUser.name }}</p>
+    <private-navbar />
     <router-view />
   </div>
 </template>
 
 <script>
+import PrivateNavbar from '../../components/PrivateNavbar.vue'
 export default {
   name: 'PrivateRoot',
+  components: {
+    PrivateNavbar
+  },
   data: function () {
     return {
       authenticatedUser: {}
@@ -23,5 +26,5 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 </style>
