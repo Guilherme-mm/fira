@@ -28,6 +28,7 @@
     "@fortawesome/vue-fontawesome": "^2.0.2",
     "@okta/okta-auth-js": "^4.7.1",
     "@okta/okta-vue": "^3.1.0",
+    "axios": "^0.21.1",
     "vue": "^2.6.12",
     "vue-router": "^3.4.9"
   },
