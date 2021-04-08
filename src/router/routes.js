@@ -8,6 +8,8 @@ import OktaVue, { LoginCallback } from '@okta/okta-vue'
 import PublicHome from '@/pages/public-home/PublicHome.vue'
 import PrivateRoot from '@/pages/private/PrivateRoot.vue'
 import UserDashboard from '@/pages/private/user-dashboard/UserDashboard.vue'
+import ConfigRoot from '@/pages/private/config/ConfigRoot.vue'
+import NetworkManagement from '@/pages/private/config/networks/network-management/NetworkManagement.vue'
 
 Vue.use(VueRouter)
 
@@ -48,6 +50,25 @@ export default new VueRouter({
           meta: {
             requiresAuth: true
           }
+        },
+        {
+          path: 'config',
+          name: 'Configurations',
+          component: ConfigRoot,
+          meta: {
+            requiresAuth: true,
+            abstractRoute: true
+          },
+          children: [
+            {
+              path: 'networks',
+              name: 'Networks Management',
+              component: NetworkManagement,
+              meta: {
+                requiresAuth: true
+              }
+            }
+          ]
         }
       ]
     }

@@ -3,9 +3,16 @@
     <div
       class="wrapper"
     >
-      <p>
-        sidebar
-      </p>
+      <div class="menu-item">
+        <router-link to="/private/dashboard">
+          Dashboard
+        </router-link>
+      </div>
+      <div class="menu-item">
+        <router-link to="/private/config/networks">
+          Config/Networks
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -19,5 +26,6 @@ export default {
 <style scoped>
   .wrapper{
      background-color: #c52121e0;
+     grid-template-columns: 1fr;
   }
 </style>
